@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "UploadedFiles";
+}
+@{ var files = Directory.GetFiles(Server.MapPath("~/UploadedFiles"));}
+<h2>UploadedFiles</h2>
+
+<div>
+    @if (files.Any())
+    {
+        foreach(var file in files) 
+        {
+    <p>
+        @Path.GetFileName(file)
+        <a href='@Url.Action("Download", "Upload", new { filePath = file})'>Download File</a>
+    </p>
+        }
+    }
+</div>
